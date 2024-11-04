@@ -43,9 +43,15 @@
 </script>
 <div>
   <div class="header">
-    <span id="todo">
+    <div id="todo" 
+      on:click={() => gsap.from("#todo",{
+        duration:1,
+         rotation: 360,
+      })}
+     role="button"
+     tabindex="0">
       할일을 하자
-    </span>
+    </div>
     <div class="right_now">
       <i class="ri-star-fill"></i>
       지금당장해라
