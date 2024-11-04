@@ -28,8 +28,6 @@
     gsap.to(".goal-list", {
       y: 50,
       duration: 2,
-      // rotation: 360,
-      // scale: 1.5,
       stagger:1
     });
 
@@ -45,7 +43,7 @@
 </script>
 <div>
   <div class="header">
-    <span>
+    <span id="todo">
       할일을 하자
     </span>
     <div class="right_now">
@@ -82,7 +80,6 @@
     background-color: rgb(255, 242, 0);
     padding: 48px;
     text-align: center;
-    font-family: todo;
     font-size: 52px;
   }
 

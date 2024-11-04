@@ -145,7 +145,8 @@
 
 <style>
   .main {
-    font-family: KyoboHand;
+    font-family: DungGeunMo;
+    
   }
   .title {
     text-align: center;
