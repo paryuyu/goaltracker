@@ -112,7 +112,7 @@
 
 <main class="main">
   {#if loading}
-    <p>Loading...</p> <!-- 데이터 로드 중 표시할 내용 -->
+    <p class="loading">Loading...</p> <!-- 데이터 로드 중 표시할 내용 -->
   {:else}
     <h1 class="title">
       <span class="underline decoration-wavy decoration-emerald-400">{goal.name}</span> {goal.totalRounds}회독
@@ -145,9 +145,19 @@
 
 <style>
   .main {
-    font-family: DungGeunMo;
-    
+    font-family: DungGeunMo; 
+    position: relative;
+    width: 100dvw;
+    height: 100dvh;
   }
+  
+  .loading{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+  }
+
   .title {
     text-align: center;
     font-size: x-large;
