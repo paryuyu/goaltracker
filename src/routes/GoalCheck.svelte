@@ -1,6 +1,7 @@
 <script>
   import * as Card from "$lib/components/ui/card";
   import { supabase } from '$lib/supabaseClient';
+  import { push,pop } from "svelte-spa-router";
 
   export let params; // URL 파라미터
 
@@ -114,9 +115,17 @@
   {#if loading}
     <p class="loading">Loading...</p> <!-- 데이터 로드 중 표시할 내용 -->
   {:else}
-    <h1 class="title">
-      <span class="underline decoration-wavy decoration-emerald-400">{goal.name}</span> {goal.totalRounds}회독
-    </h1>
+
+  <h1 class="title">
+    <button on:click={()=> pop()} aria-label="back" class="back">
+      <i class="ri-arrow-left-s-line"></i>
+    </button>
+    
+    <div class="flex flex-col justify-end items-end">
+      <span class="">{goal.name}</span>
+      <span class="text-base">{goal.totalRounds}회독</span>
+    </div>
+  </h1>
     <div class="flex flex-col gap-2 px-4">
       {#each Array(goal.totalRounds) as _, round}
         <Card.Root class="custom-card">
@@ -144,6 +153,14 @@
 </main>
 
 <style>
+
+  .back{
+    position: absolute;
+    top:24px;
+    left:12px;
+    font-size: 32px;
+  }
+  
   .main {
     font-family: DungGeunMo; 
     position: relative;
@@ -159,10 +176,14 @@
   }
 
   .title {
-    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: end;
     font-size: x-large;
-    margin: 24px;
+    padding: 24px;
   }
+
   .checkboxes {
     display: flex;
     flex-wrap: wrap;
