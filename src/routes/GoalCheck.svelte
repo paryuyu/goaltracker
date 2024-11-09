@@ -129,7 +129,7 @@
       <span class="text-base">{goal.totalRounds} {goal.subtext}</span>
     </div>
   </h1>
-    <div class="flex flex-col gap-2 px-4">
+    <div class="flex flex-col gap-2 px-4 mb-10">
       {#each Array(goal.totalRounds) as _, round}
         <Card.Root class="custom-card">
           <Card.Header>
@@ -167,8 +167,6 @@
   .main {
     font-family: DungGeunMo; 
     position: relative;
-    width: 100dvw;
-    height: 100dvh;
   }
   
   .loading{
@@ -192,6 +190,7 @@
     flex-wrap: wrap;
     gap: 4px;
   }
+
   .custom-checkbox {
     width: 24px;
     height: 24px;
@@ -203,5 +202,9 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+  }
+
+  .custom-card:last-child{
+    margin-bottom: 42px;
   }
 </style>
