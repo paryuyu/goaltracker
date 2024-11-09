@@ -15,7 +15,8 @@
     name: '',
     totalCheckBoxes: 0,
     totalRounds: 0,
-    description: ''
+    description: '',
+    subtext:''
   };
 
   // 체크박스 진행 상태를 저장할 배열 초기화
@@ -28,7 +29,7 @@
   async function fetchGoalData() {
     const { data: goals, error } = await supabase
       .from('goals')
-      .select('id, goal, totalcheckboxes, totalrounds, description')
+      .select('id, goal, totalcheckboxes, totalrounds, description, subtext')
       .eq('id', params.goal); // params에서 목표 이름 가져오기
 
     if (error) {
@@ -39,6 +40,8 @@
       goal.totalCheckBoxes = goals[0].totalcheckboxes; // 총 체크박스 수 설정
       goal.totalRounds = goals[0].totalrounds; // 총 회독 수 설정
       goal.description = goals[0].description; // 설명 설정
+      goal.subtext = goals[0].subtext; // 설명 설정
+
       // 진행 상태 배열 초기화
       progress = Array(goal.totalRounds).fill(0).map(() => Array(goal.totalCheckBoxes).fill(false));
 
@@ -123,14 +126,14 @@
     
     <div class="flex flex-col justify-end items-end">
       <span class="">{goal.name}</span>
-      <span class="text-base">{goal.totalRounds}회독</span>
+      <span class="text-base">{goal.totalRounds} {goal.subtext}</span>
     </div>
   </h1>
     <div class="flex flex-col gap-2 px-4">
       {#each Array(goal.totalRounds) as _, round}
         <Card.Root class="custom-card">
           <Card.Header>
-            <Card.Title>{round + 1}회독</Card.Title>
+            <Card.Title>{round + 1}{goal.subtext}</Card.Title>
             <Card.Description>{goal.description}</Card.Description>
           </Card.Header>
           <Card.Content>
